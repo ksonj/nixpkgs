@@ -27,7 +27,7 @@ in stdenv.mkDerivation rec {
   buildCommand = ''
     install -Dm555 $src $out/bin/coursier
     patchShebangs $out/bin/coursier
-    wrapProgram $out/bin/coursier --prefix PATH ":" ${jre}/bin
+    wrapProgram $out/bin/coursier --suffix PATH ":" ${jre}/bin
 
     # copy zsh completion
     install -Dm755 ${zshCompletion} $out/share/zsh/site-functions/_coursier
